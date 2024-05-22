@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book list</title>
+</head>
+<body>
+    Book list   |<a href="{% url 'Book:Bookpage' %}">Home</a> | <a href="{% url 'Book:Addbookpage' %}">Add new Book</a>
+    {% for list in list_book %}
+        <p><a href="{% url 'Book:bookdetail' list.id %}"> {{list.book_name}} </a>
+            {{list.book_price}}
+        <img src="../{{list.book_image.url}}" sizes="100px" width="100px">
+        {{list.book_image.url}}
+        <a href="{% url 'Book:deletebook' list.id %}">delete</a> | 
+        <a href="{% url 'Book:editbookpage' list.id %}">edit</a></p>
+    {% endfor %}
+</body>
+</html>

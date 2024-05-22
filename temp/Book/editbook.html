@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit book</title>
+</head>
+<body>
+    Edit book |<a href="{% url 'Book:Bookpage' %}">Home</a> | <a href="{% url 'Book:Booklistpage' %}">Book list</a>
+    <form method="post" action="{% url 'Book:editbook' edit_book.id %}">
+        {% csrf_token %}
+        <label>ID {{ edit_book.id }}</label>
+        <input type="hidden" name="book_id" value="{{ edit_book.id }}"><br>
+        <label>Book name</label>
+        <input type="text" name="book_name" value="{{ edit_book.book_name }}"><br>
+        <label>Price</label>
+        <input type="text" name="book_price" value="{{ edit_book.book_price }}"><br>
+        <label>Imange</label>
+        <input type="file" name="book_image" value="{{ edit_book.book_image }}"><br>
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
