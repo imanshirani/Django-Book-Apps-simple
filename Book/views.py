@@ -21,17 +21,18 @@ def Addbookpage(request):
     # Render the form initially or when the request method is not POST
     return render(request, "Book/Addbook.html", {'add_book': form})
 
-#create view list
+#list of books
 def Booklistpage(request): 
     list_book = AddBook.objects.all().order_by('book_name')
     return render(request, 'Book/booklist.html', {'list_book': list_book})
-#create view delete
+    
+#delete book
 def Deletebook(request, id):
     delete_book = AddBook.objects.get(id=id)
     delete_book.delete()
     return redirect('Book:Booklistpage')
 
-#create view edit
+#edit Book
 def Editbookpage(request, id):
     edit_book = AddBook.objects.get(id=id)
     return render(request, 'Book/editbook.html', {'edit_book': edit_book})
